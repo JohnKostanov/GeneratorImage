@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAA2A25016F00A2C55F /* AppDelegate.swift */; };
-		E1752DAF2A25016F00A2C55F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAE2A25016F00A2C55F /* ViewController.swift */; };
+		E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAE2A25016F00A2C55F /* FirstViewController.swift */; };
 		E1752DB22A25016F00A2C55F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1752DB02A25016F00A2C55F /* Main.storyboard */; };
 		E1752DB42A25017000A2C55F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1752DB32A25017000A2C55F /* Assets.xcassets */; };
 		E1752DB72A25017000A2C55F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1752DB52A25017000A2C55F /* LaunchScreen.storyboard */; };
 		E1752DC22A25017000A2C55F /* GeneratorImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DC12A25017000A2C55F /* GeneratorImageTests.swift */; };
 		E1752DCC2A25017000A2C55F /* GeneratorImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DCB2A25017000A2C55F /* GeneratorImageUITests.swift */; };
 		E1752DCE2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */; };
+		E1752DDE2A25124A00A2C55F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DDD2A25124A00A2C55F /* SecondViewController.swift */; };
+		E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DDF2A25128000A2C55F /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		E1752DA72A25016F00A2C55F /* GeneratorImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeneratorImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1752DAA2A25016F00A2C55F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1752DAE2A25016F00A2C55F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1752DAE2A25016F00A2C55F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E1752DB12A25016F00A2C55F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1752DB32A25017000A2C55F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1752DB62A25017000A2C55F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		E1752DC72A25017000A2C55F /* GeneratorImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneratorImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1752DCB2A25017000A2C55F /* GeneratorImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorImageUITests.swift; sourceTree = "<group>"; };
 		E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorImageUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1752DDD2A25124A00A2C55F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E1752DDF2A25128000A2C55F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +101,9 @@
 		E1752DA92A25016F00A2C55F /* GeneratorImage */ = {
 			isa = PBXGroup;
 			children = (
-				E1752DAA2A25016F00A2C55F /* AppDelegate.swift */,
-				E1752DAE2A25016F00A2C55F /* ViewController.swift */,
-				E1752DB02A25016F00A2C55F /* Main.storyboard */,
+				E1752DDB2A25113200A2C55F /* Scenes */,
+				E1752DDA2A25112800A2C55F /* App */,
 				E1752DB32A25017000A2C55F /* Assets.xcassets */,
-				E1752DB52A25017000A2C55F /* LaunchScreen.storyboard */,
 				E1752DB82A25017000A2C55F /* Info.plist */,
 			);
 			path = GeneratorImage;
@@ -122,6 +124,34 @@
 				E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */,
 			);
 			path = GeneratorImageUITests;
+			sourceTree = "<group>";
+		};
+		E1752DDA2A25112800A2C55F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DDC2A25114B00A2C55F /* Storyboard */,
+				E1752DAA2A25016F00A2C55F /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E1752DDB2A25113200A2C55F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DAE2A25016F00A2C55F /* FirstViewController.swift */,
+				E1752DDD2A25124A00A2C55F /* SecondViewController.swift */,
+				E1752DDF2A25128000A2C55F /* TabBarController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E1752DDC2A25114B00A2C55F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DB52A25017000A2C55F /* LaunchScreen.storyboard */,
+				E1752DB02A25016F00A2C55F /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1752DAF2A25016F00A2C55F /* ViewController.swift in Sources */,
+				E1752DDE2A25124A00A2C55F /* SecondViewController.swift in Sources */,
+				E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */,
+				E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */,
 				E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
