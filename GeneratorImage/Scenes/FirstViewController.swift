@@ -44,6 +44,7 @@ class FirstViewController: UIViewController {
         setupConstraints()
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        loadImageFromURL()
     }
     
     func setupConstraints() {
@@ -71,6 +72,32 @@ class FirstViewController: UIViewController {
         print(textField.text ?? "Текстовое поле пустое")
         
         // Дополнительные действия при нажатии на кнопку
+        loadImageFromURL(textField.text)
+    }
+    
+    func loadImageFromURL(_ request: String? = nil) {
+        let request = request == nil ? "some+text" : "\(textField.text ?? "some+text")"
+        let url = URL(string: "https://dummyimage.com/500x500&text=\(request)")
+        guard let url else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                print("Error loading image: \(error.localizedDescription)")
+                return
+            }
+            
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        }.resume()
     }
 }
 
