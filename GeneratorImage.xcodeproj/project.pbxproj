@@ -19,6 +19,7 @@
 		E1752DCE2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */; };
 		E1752DDE2A25124A00A2C55F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DDD2A25124A00A2C55F /* SecondViewController.swift */; };
 		E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DDF2A25128000A2C55F /* TabBarController.swift */; };
+		E18E9C922A26936E00A92213 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E9C912A26936E00A92213 /* FavoriteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorImageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1752DDD2A25124A00A2C55F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E1752DDF2A25128000A2C55F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E18E9C912A26936E00A92213 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		E15CE52E2A264F0F007A6510 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E18E9C912A26936E00A92213 /* FavoriteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				E15CE5342A2660B1007A6510 /* NetworkLayer.swift in Sources */,
 				E15CE5322A264FD3007A6510 /* RequestView.swift in Sources */,
 				E1752DDE2A25124A00A2C55F /* SecondViewController.swift in Sources */,
+				E18E9C922A26936E00A92213 /* FavoriteView.swift in Sources */,
 				E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */,
 				E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */,
 				E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */,

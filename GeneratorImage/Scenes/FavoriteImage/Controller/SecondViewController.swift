@@ -8,12 +8,7 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-    
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
-    
+    let favoriteView = FavoriteView()
     let cellIdentifier = "ImageCell"
     let cellSpacing: CGFloat = 20
     
@@ -25,21 +20,14 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .white
         title = "Second"
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        view.addSubview(tableView)
+        favoriteView.tableView.dataSource = self
+        favoriteView.tableView.delegate = self
+        favoriteView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        view.addSubview(favoriteView.tableView)
         
-        setupConstraints()
+        favoriteView.setupConstraints(view)
     }
     
-    func setupConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
 }
 
 extension SecondViewController: UITableViewDataSource {
