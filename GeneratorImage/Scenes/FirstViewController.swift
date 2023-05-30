@@ -77,9 +77,14 @@ class FirstViewController: UIViewController {
         
         do {
             try checkTextField(textField.text)
-        } catch {
+        } catch ErrorRequest.emptyRequest {
             showAlert(message: "Text field is empty. \nEnter your request.")
             return
+        } catch ErrorRequest.errorRequest {
+            showAlert(message: "Text field contains special characters. \nRemove special characters from queries.")
+            return
+        } catch {
+            showAlert(message: "An unknown error occurred.")
         }
         // Дополнительные действия при нажатии на кнопку
         loadImageFromURL(textField.text)
@@ -118,9 +123,22 @@ class FirstViewController: UIViewController {
     }
     
     func checkTextField(_ text: String?) throws {
-        if textField.text?.isEmpty ?? true {
+        guard let text else {
+            return
+        }
+        if text.isEmpty {
             throw ErrorRequest.emptyRequest
         }
+        
+        if containsSpecialCharacters(text: text) {
+            throw ErrorRequest.errorRequest
+        }
+        
+    }
+    
+    private func containsSpecialCharacters(text: String) -> Bool {
+        let pattern = ".*[^A-Za-z0-9].*"
+        return text.range(of: pattern, options: .regularExpression) != nil
     }
 }
 
