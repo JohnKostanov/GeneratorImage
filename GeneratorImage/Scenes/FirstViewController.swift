@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ErrorRequest: Error {
+    case emptyRequest, errorRequest
+}
+
 class FirstViewController: UIViewController {
     
     let textField: UITextField = {
@@ -71,13 +75,19 @@ class FirstViewController: UIViewController {
         print("Button tapped!")
         print(textField.text ?? "Текстовое поле пустое")
         
+        do {
+            try checkTextField(textField.text)
+        } catch {
+            showAlert(message: "Text field is empty. \nEnter your request.")
+            return
+        }
         // Дополнительные действия при нажатии на кнопку
         loadImageFromURL(textField.text)
     }
     
     func loadImageFromURL(_ request: String? = nil) {
         let request = request == nil ? "some+text" : "\(textField.text ?? "some+text")"
-        let url = URL(string: "https://dummyimage.com/500x500&text=\(request)")
+        let url = URL(string: "https://dummyimage.com/500x500&text=\(request.replacingOccurrences(of: " ", with: "+"))")
         guard let url else {
             return
         }
@@ -98,6 +108,19 @@ class FirstViewController: UIViewController {
                 }
             }
         }.resume()
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func checkTextField(_ text: String?) throws {
+        if textField.text?.isEmpty ?? true {
+            throw ErrorRequest.emptyRequest
+        }
     }
 }
 
