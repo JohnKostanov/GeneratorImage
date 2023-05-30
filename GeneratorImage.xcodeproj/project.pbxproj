@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E15CE5322A264FD3007A6510 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CE5312A264FD2007A6510 /* RequestView.swift */; };
 		E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAA2A25016F00A2C55F /* AppDelegate.swift */; };
 		E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAE2A25016F00A2C55F /* FirstViewController.swift */; };
 		E1752DB22A25016F00A2C55F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1752DB02A25016F00A2C55F /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E15CE5312A264FD2007A6510 /* RequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
 		E1752DA72A25016F00A2C55F /* GeneratorImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeneratorImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1752DAA2A25016F00A2C55F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1752DAE2A25016F00A2C55F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E15CE5282A264DFA007A6510 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E15CE5312A264FD2007A6510 /* RequestView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E15CE5292A264E0C007A6510 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E15CE52A2A264E48007A6510 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DAE2A25016F00A2C55F /* FirstViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E15CE52B2A264E56007A6510 /* RequestImage */ = {
+			isa = PBXGroup;
+			children = (
+				E15CE5292A264E0C007A6510 /* Model */,
+				E15CE5282A264DFA007A6510 /* View */,
+				E15CE52A2A264E48007A6510 /* Controller */,
+			);
+			path = RequestImage;
+			sourceTree = "<group>";
+		};
+		E15CE52C2A264EAA007A6510 /* FavoriteImage */ = {
+			isa = PBXGroup;
+			children = (
+				E15CE52F2A264F18007A6510 /* Model */,
+				E15CE52E2A264F0F007A6510 /* View */,
+				E15CE52D2A264EFF007A6510 /* Controller */,
+			);
+			path = FavoriteImage;
+			sourceTree = "<group>";
+		};
+		E15CE52D2A264EFF007A6510 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DDD2A25124A00A2C55F /* SecondViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E15CE52E2A264F0F007A6510 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E15CE52F2A264F18007A6510 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E15CE5302A264F47007A6510 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E1752DDF2A25128000A2C55F /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		E1752D9E2A25016F00A2C55F = {
 			isa = PBXGroup;
 			children = (
@@ -138,9 +213,9 @@
 		E1752DDB2A25113200A2C55F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				E1752DAE2A25016F00A2C55F /* FirstViewController.swift */,
-				E1752DDD2A25124A00A2C55F /* SecondViewController.swift */,
-				E1752DDF2A25128000A2C55F /* TabBarController.swift */,
+				E15CE52B2A264E56007A6510 /* RequestImage */,
+				E15CE52C2A264EAA007A6510 /* FavoriteImage */,
+				E15CE5302A264F47007A6510 /* TabBar */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -285,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15CE5322A264FD3007A6510 /* RequestView.swift in Sources */,
 				E1752DDE2A25124A00A2C55F /* SecondViewController.swift in Sources */,
 				E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */,
 				E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */,
