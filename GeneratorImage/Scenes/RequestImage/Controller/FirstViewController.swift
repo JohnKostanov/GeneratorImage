@@ -26,12 +26,13 @@ class FirstViewController: UIViewController {
         view.addSubview(request.buttonAddToFavorites)
         request.setupConstraints(view)
         
-        request.buttonSendRequest.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        request.buttonSendRequest.addTarget(self, action: #selector(sendRequest), for: .touchUpInside)
+        request.buttonAddToFavorites.addTarget(self, action: #selector(addToFaforites), for: .touchUpInside)
         networkLayer.loadImageFromURL(text: nil, request.imageView)
     }
     
     // Обработчик действия кнопки
-    @objc func buttonTapped() {
+    @objc func sendRequest() {
         do {
             try checkTextField(request.textField.text)
         } catch ErrorRequest.emptyRequest {
@@ -45,6 +46,10 @@ class FirstViewController: UIViewController {
         }
         // Дополнительные действия при нажатии на кнопку
         networkLayer.loadImageFromURL(text: request.textField.text, request.imageView)
+    }
+    
+    @objc func addToFaforites() {
+        print("Add to favorites")
     }
     
     private func showAlert(message: String) {
