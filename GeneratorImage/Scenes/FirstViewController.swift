@@ -24,6 +24,14 @@ class FirstViewController: UIViewController {
         return button
     }()
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "image")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,6 +40,7 @@ class FirstViewController: UIViewController {
         
         view.addSubview(textField)
         view.addSubview(button)
+        view.addSubview(imageView)
         setupConstraints()
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -46,7 +55,12 @@ class FirstViewController: UIViewController {
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             button.widthAnchor.constraint(equalToConstant: 100),
-            button.heightAnchor.constraint(equalToConstant: 50)
+            button.heightAnchor.constraint(equalToConstant: 50),
+            
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(constraints)
     }
