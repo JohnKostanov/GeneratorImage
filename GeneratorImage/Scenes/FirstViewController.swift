@@ -137,7 +137,7 @@ class FirstViewController: UIViewController {
     }
     
     private func containsSpecialCharacters(text: String) -> Bool {
-        let pattern = ".*[^A-Za-z0-9].*"
+        let pattern = ".*[^A-Za-z0-9\\s].*"
         return text.range(of: pattern, options: .regularExpression) != nil
     }
 }
