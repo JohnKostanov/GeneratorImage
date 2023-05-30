@@ -21,11 +21,12 @@ class FirstViewController: UIViewController {
         title = "First"
         
         view.addSubview(request.textField)
-        view.addSubview(request.button)
         view.addSubview(request.imageView)
+        view.addSubview(request.buttonSendRequest)
+        view.addSubview(request.buttonAddToFavorites)
         request.setupConstraints(view)
         
-        request.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        request.buttonSendRequest.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         networkLayer.loadImageFromURL(text: nil, request.imageView)
     }
     
