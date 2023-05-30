@@ -50,28 +50,4 @@ class RequestView {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func loadImageFromURL(_ request: String? = nil) {
-        let requestText = request == nil ? "some+text" : "\(textField.text ?? "some+text")"
-        let url = URL(string: "https://dummyimage.com/500x500&text=\(requestText.replacingOccurrences(of: " ", with: "+"))")
-        guard let url else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
-            guard let self = self else {
-                return
-            }
-            
-            if let error = error {
-                print("Error loading image: \(error.localizedDescription)")
-                return
-            }
-            
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.imageView.image = image
-                }
-            }
-        }.resume()
-    }
 }

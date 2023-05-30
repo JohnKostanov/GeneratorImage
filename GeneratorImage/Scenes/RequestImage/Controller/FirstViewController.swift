@@ -13,10 +13,10 @@ enum ErrorRequest: Error {
 
 class FirstViewController: UIViewController {
     let request = RequestView()
+    let networkLayer = NetworkLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = .white
         title = "First"
         
@@ -26,14 +26,11 @@ class FirstViewController: UIViewController {
         request.setupConstraints(view)
         
         request.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        request.loadImageFromURL()
+        networkLayer.loadImageFromURL(text: nil, request.imageView)
     }
     
     // Обработчик действия кнопки
     @objc func buttonTapped() {
-        print("Button tapped!")
-        print(request.textField.text ?? "Текстовое поле пустое")
-        
         do {
             try checkTextField(request.textField.text)
         } catch ErrorRequest.emptyRequest {
@@ -46,7 +43,7 @@ class FirstViewController: UIViewController {
             showAlert(message: "An unknown error occurred.")
         }
         // Дополнительные действия при нажатии на кнопку
-        request.loadImageFromURL(request.textField.text)
+        networkLayer.loadImageFromURL(text: request.textField.text, request.imageView)
     }
     
     private func showAlert(message: String) {
@@ -67,7 +64,6 @@ class FirstViewController: UIViewController {
         if containsSpecialCharacters(text: text) {
             throw ErrorRequest.errorRequest
         }
-        
     }
     
     private func containsSpecialCharacters(text: String) -> Bool {
