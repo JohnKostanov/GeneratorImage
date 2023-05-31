@@ -25,6 +25,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        requestView.textField.delegate = self
         title = "First"
         
         view.addSubview(requestView.textField)
@@ -97,4 +98,12 @@ class FirstViewController: UIViewController {
         }
         return true
     }
+}
+
+extension FirstViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // Скрывает клавиатуру
+        return true
+    }
+
 }
