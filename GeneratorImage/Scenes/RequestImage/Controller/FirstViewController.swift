@@ -12,7 +12,7 @@ enum ErrorRequest: Error {
 }
 
 protocol ImageDelegate: AnyObject {
-    func sendImage(_ image: UIImage)
+    func addImageToFavorites(_ image: UIImage)
 }
 
 class FirstViewController: UIViewController {
@@ -57,7 +57,7 @@ class FirstViewController: UIViewController {
     @objc func addToFaforites() {
         print("Add to favorites")
         if let image = request.imageView.image {
-            delegate?.sendImage(image)
+            delegate?.addImageToFavorites(image)
         }
     }
     

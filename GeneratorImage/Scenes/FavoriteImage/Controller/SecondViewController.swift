@@ -26,12 +26,7 @@ class SecondViewController: UIViewController {
         favoriteView.setupConstraints(view)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        updateTableView()
-    }
-    
     func updateTableView() {
-        // Обновление таблицы
         favoriteView.tableView.reloadData()
     }
 }
@@ -55,7 +50,7 @@ extension SecondViewController: UITableViewDelegate {
 }
 
 extension SecondViewController: ImageDelegate {
-    func sendImage(_ image: UIImage) {
+    func addImageToFavorites(_ image: UIImage) {
         images.append(image)
         updateTableView()
         print(images.count)
