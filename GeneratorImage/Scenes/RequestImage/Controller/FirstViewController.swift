@@ -11,10 +11,15 @@ enum ErrorRequest: Error {
     case emptyRequest, errorRequest
 }
 
+protocol ImageDelegate: AnyObject {
+    func sendImage(_ image: UIImage)
+}
+
 class FirstViewController: UIViewController {
     let request = RequestView()
     let networkLayer = NetworkLayer()
-    let secondVC = SecondViewController()
+
+    weak var delegate: ImageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +35,6 @@ class FirstViewController: UIViewController {
         request.buttonSendRequest.addTarget(self, action: #selector(sendRequest), for: .touchUpInside)
         request.buttonAddToFavorites.addTarget(self, action: #selector(addToFaforites), for: .touchUpInside)
         networkLayer.loadImageFromURL(text: nil, request.imageView)
-        
-        secondVC.delegate = self
     }
     
     // Обработчик действия кнопки
@@ -54,8 +57,7 @@ class FirstViewController: UIViewController {
     @objc func addToFaforites() {
         print("Add to favorites")
         if let image = request.imageView.image {
-            secondVC.delegate?.sendImage(image)
-//            sendImage(image) //work
+            delegate?.sendImage(image)
         }
     }
     
@@ -82,13 +84,5 @@ class FirstViewController: UIViewController {
     private func containsSpecialCharacters(text: String) -> Bool {
         let pattern = ".*[^A-Za-z0-9\\s].*"
         return text.range(of: pattern, options: .regularExpression) != nil
-    }
-}
-
-extension FirstViewController: ImageDelegate {
-    func sendImage(_ image: UIImage) {
-        images.append(image)
-        print(images.count)
-        secondVC.updateTableView()
     }
 }

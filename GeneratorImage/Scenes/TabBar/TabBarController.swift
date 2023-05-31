@@ -14,6 +14,7 @@ class TabBarController: UITabBarController {
         // Создаем два контроллера представления для каждого таба
         let firstVC = FirstViewController()
         let secondVC = SecondViewController()
+        firstVC.delegate = secondVC
         
         // Устанавливаем контроллеры представления в таб-бар
         setViewControllers([firstVC, secondVC], animated: false)

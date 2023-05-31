@@ -17,9 +17,6 @@ class FavoriteImage {
 
 extension FavoriteImage {
     static var getAllFavoriteImages: [UIImage?] {
-        [UIImage(named: "image1"),
-         UIImage(named: "image2"),
-         UIImage(named: "image3")
-        ]
+        [UIImage(named: "image")]
     }
 }
