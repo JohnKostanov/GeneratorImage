@@ -37,12 +37,12 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.allFavoriteImages.count
+        return favorites.allImages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.imageView?.image = favorites.allFavoriteImages[indexPath.row]
+        cell.imageView?.image = favorites.allImages[indexPath.row]
         return cell
     }
 }
@@ -51,17 +51,29 @@ extension SecondViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.width - 30
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            favorites.allImages.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
 }
 
 extension SecondViewController: ImageDelegate {
     func addImageToFavorites(_ image: UIImage) {
-        if favorites.allFavoriteImages.count < favorites.maxAmount {
-            favorites.allFavoriteImages.insert(image, at: 0)
+        if favorites.allImages.count < favorites.maxAmount {
+            favorites.allImages.insert(image, at: 0)
             updateTableView()
-            print(favorites.allFavoriteImages.count)
+            print(favorites.allImages.count)
         } else {
-            favorites.allFavoriteImages.insert(image, at: 0)
-            favorites.allFavoriteImages.removeLast()
+            favorites.allImages.insert(image, at: 0)
+            favorites.allImages.removeLast()
         }
     }
 }

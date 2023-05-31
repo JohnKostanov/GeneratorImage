@@ -10,10 +10,10 @@ import UIKit
 class FavoriteImage {
     var image: UIImage?
     let maxAmount: Int
-    var allFavoriteImages: [UIImage?]
+    var allImages: [UIImage?]
     
     init(maxAmount: Int) {
         self.maxAmount = maxAmount
-        self.allFavoriteImages = [UIImage(named: "image")]
+        self.allImages = [UIImage(named: "image")]
     }
 }
