@@ -9,14 +9,11 @@ import UIKit
 
 class FavoriteImage {
     var image: UIImage?
+    let maxAmount: Int
+    var allFavoriteImages: [UIImage?]
     
-    init(image: UIImage?) {
-        self.image = image
-    }
-}
-
-extension FavoriteImage {
-    static var getAllFavoriteImages: [UIImage?] {
-        [UIImage(named: "image")]
+    init(maxAmount: Int) {
+        self.maxAmount = maxAmount
+        self.allFavoriteImages = [UIImage(named: "image")]
     }
 }

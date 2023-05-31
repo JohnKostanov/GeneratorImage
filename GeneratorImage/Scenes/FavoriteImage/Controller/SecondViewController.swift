@@ -10,7 +10,7 @@ import UIKit
 class SecondViewController: UIViewController {
     let favoriteView = FavoriteView()
     let cellIdentifier = "ImageCell"
-    var images = FavoriteImage.getAllFavoriteImages
+    var favorites = FavoriteImage(maxAmount: 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +26,23 @@ class SecondViewController: UIViewController {
         favoriteView.setupConstraints(view)
     }
     
-    func updateTableView() {
+    override func viewWillAppear(_ animated: Bool) {
+        updateTableView()
+    }
+    
+    private func updateTableView() {
         favoriteView.tableView.reloadData()
     }
 }
 
 extension SecondViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return favorites.allFavoriteImages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.imageView?.image = images[indexPath.row]
+        cell.imageView?.image = favorites.allFavoriteImages[indexPath.row]
         return cell
     }
 }
@@ -51,8 +55,13 @@ extension SecondViewController: UITableViewDelegate {
 
 extension SecondViewController: ImageDelegate {
     func addImageToFavorites(_ image: UIImage) {
-        images.append(image)
-        updateTableView()
-        print(images.count)
+        if favorites.allFavoriteImages.count < favorites.maxAmount {
+            favorites.allFavoriteImages.insert(image, at: 0)
+            updateTableView()
+            print(favorites.allFavoriteImages.count)
+        } else {
+            favorites.allFavoriteImages.insert(image, at: 0)
+            favorites.allFavoriteImages.removeLast()
+        }
     }
 }
