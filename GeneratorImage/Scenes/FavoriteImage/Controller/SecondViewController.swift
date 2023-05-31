@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol ImageDelegate: AnyObject {
+    func sendImage(_ image: UIImage)
+}
+
+var images = FavoriteImage.getAllFavoriteImages
+
 class SecondViewController: UIViewController {
     let favoriteView = FavoriteView()
     let cellIdentifier = "ImageCell"
-    let cellSpacing: CGFloat = 20
     
-    let images: [UIImage] = [UIImage(named: "image1")!, UIImage(named: "image2")!, UIImage(named: "image3")!]
+    weak var delegate: ImageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +31,18 @@ class SecondViewController: UIViewController {
         view.addSubview(favoriteView.tableView)
         
         favoriteView.setupConstraints(view)
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateTableView()
+    }
+    
+    func updateTableView() {
+        // Обновление таблицы
+        favoriteView.tableView.reloadData()
+        print("In TV have \(images.count)")
+    }
 }
 
 extension SecondViewController: UITableViewDataSource {

@@ -14,6 +14,7 @@ enum ErrorRequest: Error {
 class FirstViewController: UIViewController {
     let request = RequestView()
     let networkLayer = NetworkLayer()
+    let secondVC = SecondViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class FirstViewController: UIViewController {
         request.buttonSendRequest.addTarget(self, action: #selector(sendRequest), for: .touchUpInside)
         request.buttonAddToFavorites.addTarget(self, action: #selector(addToFaforites), for: .touchUpInside)
         networkLayer.loadImageFromURL(text: nil, request.imageView)
+        
+        secondVC.delegate = self
     }
     
     // Обработчик действия кнопки
@@ -50,6 +53,10 @@ class FirstViewController: UIViewController {
     
     @objc func addToFaforites() {
         print("Add to favorites")
+        if let image = request.imageView.image {
+            secondVC.delegate?.sendImage(image)
+//            sendImage(image) //work
+        }
     }
     
     private func showAlert(message: String) {
@@ -78,3 +85,10 @@ class FirstViewController: UIViewController {
     }
 }
 
+extension FirstViewController: ImageDelegate {
+    func sendImage(_ image: UIImage) {
+        images.append(image)
+        print(images.count)
+        secondVC.updateTableView()
+    }
+}
