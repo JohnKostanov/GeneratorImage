@@ -16,8 +16,9 @@ protocol ImageDelegate: AnyObject {
 }
 
 class FirstViewController: UIViewController {
-    let request = RequestView()
+    let requestView = RequestView()
     let networkLayer = NetworkLayer()
+    var counterRequest = CounterRequest(maxAmount: 20)
 
     weak var delegate: ImageDelegate?
     
@@ -26,21 +27,21 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .white
         title = "First"
         
-        view.addSubview(request.textField)
-        view.addSubview(request.imageView)
-        view.addSubview(request.buttonSendRequest)
-        view.addSubview(request.buttonAddToFavorites)
-        request.setupConstraints(view)
+        view.addSubview(requestView.textField)
+        view.addSubview(requestView.imageView)
+        view.addSubview(requestView.buttonSendRequest)
+        view.addSubview(requestView.buttonAddToFavorites)
+        requestView.setupConstraints(view)
         
-        request.buttonSendRequest.addTarget(self, action: #selector(sendRequest), for: .touchUpInside)
-        request.buttonAddToFavorites.addTarget(self, action: #selector(addToFaforites), for: .touchUpInside)
-        networkLayer.loadImageFromURL(text: nil, request.imageView)
+        requestView.buttonSendRequest.addTarget(self, action: #selector(sendRequest), for: .touchUpInside)
+        requestView.buttonAddToFavorites.addTarget(self, action: #selector(addToFaforites), for: .touchUpInside)
+        networkLayer.loadImageFromURL(text: nil, requestView.imageView)
     }
     
     // Обработчик действия кнопки
     @objc func sendRequest() {
         do {
-            try checkTextField(request.textField.text)
+            try checkTextField(requestView.textField.text)
         } catch ErrorRequest.emptyRequest {
             showAlert(message: "Text field is empty. \nEnter your request.")
             return
@@ -50,13 +51,15 @@ class FirstViewController: UIViewController {
         } catch {
             showAlert(message: "An unknown error occurred.")
         }
+        guard checkCountRequest() else {
+            return
+        }
         // Дополнительные действия при нажатии на кнопку
-        networkLayer.loadImageFromURL(text: request.textField.text, request.imageView)
+        networkLayer.loadImageFromURL(text: requestView.textField.text, requestView.imageView)
     }
     
     @objc func addToFaforites() {
-        print("Add to favorites")
-        if let image = request.imageView.image {
+        if let image = requestView.imageView.image {
             delegate?.addImageToFavorites(image)
         }
     }
@@ -84,5 +87,14 @@ class FirstViewController: UIViewController {
     private func containsSpecialCharacters(text: String) -> Bool {
         let pattern = ".*[^A-Za-z0-9\\s].*"
         return text.range(of: pattern, options: .regularExpression) != nil
+    }
+    
+    private func checkCountRequest() -> Bool {
+        counterRequest.currentCount += 1
+        if counterRequest.currentCount > counterRequest.maxAmount {
+            showAlert(message: "The number of requests is limited to \(counterRequest.maxAmount). Try again tomorrow.")
+            return false
+        }
+        return true
     }
 }

@@ -21,6 +21,7 @@
 		E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DDF2A25128000A2C55F /* TabBarController.swift */; };
 		E18E9C922A26936E00A92213 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E9C912A26936E00A92213 /* FavoriteView.swift */; };
 		E18E9C942A26B1B100A92213 /* FavoriteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E9C932A26B1B100A92213 /* FavoriteImage.swift */; };
+		E18E9C962A27A51B00A92213 /* CounterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E9C952A27A51B00A92213 /* CounterRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		E1752DDF2A25128000A2C55F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E18E9C912A26936E00A92213 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		E18E9C932A26B1B100A92213 /* FavoriteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImage.swift; sourceTree = "<group>"; };
+		E18E9C952A27A51B00A92213 /* CounterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		E15CE5292A264E0C007A6510 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E18E9C952A27A51B00A92213 /* CounterRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				E18E9C922A26936E00A92213 /* FavoriteView.swift in Sources */,
 				E1752DAF2A25016F00A2C55F /* FirstViewController.swift in Sources */,
 				E1752DE02A25128000A2C55F /* TabBarController.swift in Sources */,
+				E18E9C962A27A51B00A92213 /* CounterRequest.swift in Sources */,
 				E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
