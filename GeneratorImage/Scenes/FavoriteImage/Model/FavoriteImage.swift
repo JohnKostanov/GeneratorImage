@@ -14,6 +14,6 @@ class FavoriteImage {
     
     init(maxAmount: Int) {
         self.maxAmount = maxAmount
-        self.allImages = []//[UIImage(named: "image")]
+        self.allImages = [] //[UIImage(named: "image")]
     }
 }

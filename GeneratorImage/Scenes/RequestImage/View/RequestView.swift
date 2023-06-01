@@ -54,12 +54,12 @@ class RequestView {
             imageView.heightAnchor.constraint(equalToConstant: 200),
             
             buttonSendRequest.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonSendRequest.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            buttonSendRequest.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
             buttonSendRequest.widthAnchor.constraint(equalToConstant: 200),
             buttonSendRequest.heightAnchor.constraint(equalToConstant: 50),
             
             buttonAddToFavorites.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonAddToFavorites.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
+            buttonAddToFavorites.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 120),
             buttonAddToFavorites.widthAnchor.constraint(equalToConstant: 200),
             buttonAddToFavorites.heightAnchor.constraint(equalToConstant: 50)
         ]

@@ -14,11 +14,10 @@ class SecondViewController: UIViewController {
     
     // Создаем массив для хранения путей к файлам изображений
     var imagePaths: [String] = []
+    var loadedImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
         title = "Second"
         
         favoriteView.tableView.dataSource = self
@@ -69,24 +68,21 @@ class SecondViewController: UIViewController {
 
         // Сохраняем путь к файлу в UserDefaults
         UserDefaults.standard.set(imagePaths, forKey: "SavedImagesPaths")
+        UserDefaults.standard.synchronize()
     }
-    
     private func loadSavedImages() {
         // Получаем массив путей к файлам из UserDefaults
         if let savedImagesPaths = UserDefaults.standard.array(forKey: "SavedImagesPaths") as? [String] {
             // Загружаем каждое изображение с диска
-            var loadedImages: [UIImage] = []
             for imagePath in savedImagesPaths {
                 if let savedImage = UIImage(contentsOfFile: imagePath) {
                     loadedImages.append(savedImage)
+                    favorites.allImages.append(savedImage)
                 }
             }
-            if favorites.allImages.isEmpty {
-                favorites.allImages = loadedImages
-            }
-            print(savedImagesPaths)
         }
     }
+    
 }
 
 extension SecondViewController: UITableViewDataSource {
@@ -114,17 +110,8 @@ extension SecondViewController: UITableViewDelegate {
         if editingStyle == .delete {
             favorites.allImages.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            do {
-                try FileManager.default.removeItem(atPath: imagePaths[indexPath.row])
-                imagePaths.remove(at: indexPath.row)
-                print("Изображение удалено успешно")
-            } catch {
-                print("Ошибка удаления изображения: \(error)")
-            }
         }
     }
-    
 }
 
 extension SecondViewController: ImageDelegate {
