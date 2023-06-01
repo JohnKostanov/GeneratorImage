@@ -13,6 +13,7 @@ class RequestView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Enter your request for image"
+        textField.accessibilityIdentifier = "TextFieldForRequest"
         return textField
     }()
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E12BD1672A28F5A00038D610 /* SecondViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12BD1662A28F5A00038D610 /* SecondViewControllerTests.swift */; };
+		E12BD1692A2906710038D610 /* FirstViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12BD1682A2906710038D610 /* FirstViewControllerTests.swift */; };
 		E15CE5322A264FD3007A6510 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CE5312A264FD2007A6510 /* RequestView.swift */; };
 		E15CE5342A2660B1007A6510 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CE5332A2660B1007A6510 /* NetworkLayer.swift */; };
 		E1752DAB2A25016F00A2C55F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1752DAA2A25016F00A2C55F /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		E12BD1662A28F5A00038D610 /* SecondViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControllerTests.swift; sourceTree = "<group>"; };
+		E12BD1682A2906710038D610 /* FirstViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerTests.swift; sourceTree = "<group>"; };
 		E15CE5312A264FD2007A6510 /* RequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
 		E15CE5332A2660B1007A6510 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		E1752DA72A25016F00A2C55F /* GeneratorImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeneratorImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +222,7 @@
 			children = (
 				E1752DCB2A25017000A2C55F /* GeneratorImageUITests.swift */,
 				E1752DCD2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift */,
+				E12BD1682A2906710038D610 /* FirstViewControllerTests.swift */,
 			);
 			path = GeneratorImageUITests;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12BD1692A2906710038D610 /* FirstViewControllerTests.swift in Sources */,
 				E1752DCE2A25017000A2C55F /* GeneratorImageUITestsLaunchTests.swift in Sources */,
 				E1752DCC2A25017000A2C55F /* GeneratorImageUITests.swift in Sources */,
 			);
