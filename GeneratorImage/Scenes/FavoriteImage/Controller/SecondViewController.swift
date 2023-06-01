@@ -16,8 +16,11 @@ class SecondViewController: UIViewController {
     var imagePaths: [String] = []
     var loadedImages: [UIImage] = []
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         title = "Second"
         
         favoriteView.tableView.dataSource = self
@@ -67,22 +70,24 @@ class SecondViewController: UIViewController {
         }
 
         // Сохраняем путь к файлу в UserDefaults
-        UserDefaults.standard.set(imagePaths, forKey: "SavedImagesPaths")
-        UserDefaults.standard.synchronize()
+        defaults.set(imagePaths, forKey: favorites.keyForSavedImagesPaths)
+        defaults.synchronize()
     }
+    
     private func loadSavedImages() {
         // Получаем массив путей к файлам из UserDefaults
-        if let savedImagesPaths = UserDefaults.standard.array(forKey: "SavedImagesPaths") as? [String] {
+        if let savedImagesPaths = UserDefaults.standard.array(forKey: favorites.keyForSavedImagesPaths) as? [String] {
             // Загружаем каждое изображение с диска
             for imagePath in savedImagesPaths {
                 if let savedImage = UIImage(contentsOfFile: imagePath) {
-                    loadedImages.append(savedImage)
-                    favorites.allImages.append(savedImage)
+                    if loadedImages.count < favorites.maxAmount {
+                        loadedImages.append(savedImage)
+                    }
                 }
             }
+            favorites.allImages = loadedImages
         }
     }
-    
 }
 
 extension SecondViewController: UITableViewDataSource {

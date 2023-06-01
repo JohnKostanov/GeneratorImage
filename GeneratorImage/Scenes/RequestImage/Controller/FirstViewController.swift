@@ -26,6 +26,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         requestView.textField.delegate = self
         title = "First"
+        view.backgroundColor = .white
         
         view.addSubview(requestView.textField)
         view.addSubview(requestView.imageView)

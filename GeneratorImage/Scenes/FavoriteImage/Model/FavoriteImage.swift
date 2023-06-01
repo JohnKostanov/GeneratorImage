@@ -11,6 +11,7 @@ class FavoriteImage {
     var image: UIImage?
     let maxAmount: Int
     var allImages: [UIImage?]
+    let keyForSavedImagesPaths = "SavedImagesPaths"
     
     init(maxAmount: Int) {
         self.maxAmount = maxAmount
