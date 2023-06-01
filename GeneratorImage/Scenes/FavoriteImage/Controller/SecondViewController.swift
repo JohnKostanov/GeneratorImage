@@ -115,6 +115,9 @@ extension SecondViewController: UITableViewDelegate {
         if editingStyle == .delete {
             favorites.allImages.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            if favorites.allImages.isEmpty {
+                defaults.removeObject(forKey: favorites.keyForSavedImagesPaths)
+            }
         }
     }
 }
