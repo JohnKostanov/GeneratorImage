@@ -82,7 +82,5 @@ extension SecondViewController: ImageDelegate {
             favorites.allImages.removeLast()
             favorites.imagePaths.removeLast()
         }
-        
-        dataDelegate?.saveImages(favorites)
     }
 }
