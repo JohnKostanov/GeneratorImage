@@ -12,11 +12,8 @@ class SecondViewController: UIViewController {
     let cellIdentifier = "ImageCell"
     var favorites = FavoriteImage(maxAmount: 10)
     
-    // Создаем массив для хранения путей к файлам изображений
-    var imagePaths: [String] = []
-    var loadedImages: [UIImage] = []
-    
-    let defaults = UserDefaults.standard
+    weak var dataDelegate: DataManagerDelegate?
+    let dataManager = DataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +24,10 @@ class SecondViewController: UIViewController {
         favoriteView.tableView.delegate = self
         favoriteView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         view.addSubview(favoriteView.tableView)
-        
         favoriteView.setupConstraints(view)
-        loadSavedImages()
+
+        dataDelegate = dataManager
+        dataDelegate?.loadSavedImages(favorites)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,55 +36,6 @@ class SecondViewController: UIViewController {
     
     private func updateTableView() {
         favoriteView.tableView.reloadData()
-    }
-    
-    private func saveImages() {
-        // Получаем путь к директории для сохранения изображений
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return
-        }
-
-        // Сохраняем изображения на диск и добавляем пути к файлам в массив
-        for image in favorites.allImages {
-            guard let image else {
-                continue
-            }
-            // Создаем уникальное имя файла для изображения
-            let imageName = UUID().uuidString
-
-            // Создаем путь к файлу на диске
-            let imagePath = documentsDirectory.appendingPathComponent("\(imageName).png")
-
-            // Сохраняем изображение на диск
-            if let imageData = image.pngData() {
-                do {
-                    try imageData.write(to: imagePath)
-                    // Добавляем путь к файлу в массив
-                    imagePaths.insert(imagePath.path, at: 0)
-                } catch {
-                    print("Ошибка сохранения изображения на диск: \(error)")
-                }
-            }
-        }
-
-        // Сохраняем путь к файлу в UserDefaults
-        defaults.set(imagePaths, forKey: favorites.keyForSavedImagesPaths)
-        defaults.synchronize()
-    }
-    
-    private func loadSavedImages() {
-        // Получаем массив путей к файлам из UserDefaults
-        if let savedImagesPaths = UserDefaults.standard.array(forKey: favorites.keyForSavedImagesPaths) as? [String] {
-            // Загружаем каждое изображение с диска
-            for imagePath in savedImagesPaths {
-                if let savedImage = UIImage(contentsOfFile: imagePath) {
-                    if loadedImages.count < favorites.maxAmount {
-                        loadedImages.append(savedImage)
-                    }
-                }
-            }
-            favorites.allImages = loadedImages
-        }
     }
 }
 
@@ -116,7 +65,7 @@ extension SecondViewController: UITableViewDelegate {
             favorites.allImages.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             if favorites.allImages.isEmpty {
-                defaults.removeObject(forKey: favorites.keyForSavedImagesPaths)
+                dataDelegate?.removeAllImages(favorites)
             }
         }
     }
@@ -131,8 +80,9 @@ extension SecondViewController: ImageDelegate {
         } else {
             favorites.allImages.insert(image, at: 0)
             favorites.allImages.removeLast()
-            imagePaths.removeLast()
+            favorites.imagePaths.removeLast()
         }
-        saveImages()
+        
+        dataDelegate?.saveImages(favorites)
     }
 }
